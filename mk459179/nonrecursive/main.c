@@ -12,8 +12,7 @@
 typedef struct sharedPtr SharedPtrSumset;
 struct sharedPtr {
     int refCounter;
-    Sumset  sumset;
-    Sumset* toFree;
+    Sumset*  sumset;
     SharedPtrSumset* parent;
 };
 
@@ -56,7 +55,7 @@ bool isEmpty(Stack* stack) {
 
 void releasePtr(SharedPtrSumset* ptr) {
     if (ptr->refCounter == 1) {
-        free(ptr->toFree);
+        free(ptr->sumset);
         free(ptr);
     } else {
         ptr->refCounter--;
@@ -85,7 +84,7 @@ void decrementParent(SharedPtrSumset* ptr) {
 }
 
 void swap(FooCall* f) {
-    if ((*f).a->sumset.sum > (*f).b->sumset.sum) {
+    if ((*f).a->sumset->sum > (*f).b->sumset->sum) {
         SharedPtrSumset* ptr = (*f).a;
         (*f).a = (*f).b;
         (*f).b = ptr;
@@ -98,21 +97,20 @@ static void solve(Stack* stack, InputData* input, Solution* solution) {
         FooCall f = pop(stack);
         swap(&f);
 
-        if (is_sumset_intersection_trivial(&f.a->sumset, &f.b->sumset)) {
-            for (size_t i = f.a->sumset.last; i <= input->d; ++i) {
-                if (!does_sumset_contain(&f.b->sumset, i)) {
+        if (is_sumset_intersection_trivial(f.a->sumset, f.b->sumset)) {
+            for (size_t i = f.a->sumset->last; i <= input->d; ++i) {
+                if (!does_sumset_contain(f.b->sumset, i)) {
                     f.a->refCounter++;
                     f.b->refCounter++;
 
                     FooCall call;
                     Sumset* a_with_i = malloc(sizeof(Sumset));
-                    sumset_add(a_with_i, &f.a->sumset, i);
+                    sumset_add(a_with_i, f.a->sumset, i);
                     SharedPtrSumset* aWithIPtr = malloc(sizeof(SharedPtrSumset));
 
-                    aWithIPtr->sumset = *a_with_i;
+                    aWithIPtr->sumset = a_with_i;
                     aWithIPtr->refCounter = 1;
                     aWithIPtr->parent = f.a;
-                    aWithIPtr->toFree = a_with_i;
                     call.a = aWithIPtr;
                     call.b = f.b;
                     push(stack, call);
@@ -120,10 +118,10 @@ static void solve(Stack* stack, InputData* input, Solution* solution) {
                     incrementParent(f.b);
                 }
             }
-        } else if ((f.a->sumset.sum == f.b->sumset.sum) &&
-                (get_sumset_intersection_size(&f.a->sumset, &f.b->sumset)) == 2) {
-            if (f.b->sumset.sum > (*solution).sum) {
-                solution_build(solution, input, &f.a->sumset, &f.b->sumset);
+        } else if ((f.a->sumset->sum == f.b->sumset->sum) &&
+                (get_sumset_intersection_size(f.a->sumset, f.b->sumset)) == 2) {
+            if (f.b->sumset->sum > (*solution).sum) {
+                solution_build(solution, input, f.a->sumset, f.b->sumset);
             }
         }
         decrementParent(f.a);
@@ -152,8 +150,10 @@ int main()
     b->refCounter = 1;
     a->parent = NULL;
     b->parent = NULL;
-    a->sumset = input_data.a_start;
-    b->sumset = input_data.b_start;
+    a->sumset = malloc(sizeof(Sumset));
+    *a->sumset = input_data.a_start;
+    b->sumset = malloc(sizeof(Sumset));
+    *b->sumset = input_data.b_start;
     FooCall f;
     f.a = a;
     f.b = b;
@@ -167,6 +167,5 @@ int main()
     clock_gettime(CLOCK_MONOTONIC, &end);
     double time_taken = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     printf("Execution time: %f seconds\n", time_taken);
-
     return 0;
 }
