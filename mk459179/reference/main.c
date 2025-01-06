@@ -9,7 +9,7 @@
 static InputData input_data;
 
 static Solution best_solution;
-int x = 0;
+
 static void solve(const Sumset* a, const Sumset* b)
 {
     if (a->sum > b->sum)
@@ -27,7 +27,6 @@ static void solve(const Sumset* a, const Sumset* b)
         if (b->sum > best_solution.sum)
             solution_build(&best_solution, &input_data, a, b);
     }
-    x++;
 }
 
 int main()
@@ -35,7 +34,7 @@ int main()
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
     //input_data_read(&input_data);
-    input_data_init(&input_data, 8, 30, (int[]){0}, (int[]){1, 0});
+    input_data_init(&input_data, 8, 25, (int[]){0}, (int[]){1, 0});
 
     solution_init(&best_solution);
     solve(&input_data.a_start, &input_data.b_start);
@@ -45,6 +44,5 @@ int main()
     double time_taken = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     printf("Execution time: %f seconds\n", time_taken);
 
-    printf("%d", x);
     return 0;
 }

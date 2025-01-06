@@ -9,13 +9,11 @@
 
 #define MAX_STACK_SIZE 8200
 
-int x =0;
-int y = 0;
-
 typedef struct sharedPtr SharedPtrSumset;
 struct sharedPtr {
     int refCounter;
     Sumset  sumset;
+    Sumset* toFree;
     SharedPtrSumset* parent;
 };
 
@@ -58,8 +56,8 @@ bool isEmpty(Stack* stack) {
 
 void releasePtr(SharedPtrSumset* ptr) {
     if (ptr->refCounter == 1) {
+        free(ptr->toFree);
         free(ptr);
-        y++;
     } else {
         ptr->refCounter--;
     }
@@ -114,7 +112,7 @@ static void solve(Stack* stack, InputData* input, Solution* solution) {
                     aWithIPtr->sumset = *a_with_i;
                     aWithIPtr->refCounter = 1;
                     aWithIPtr->parent = f.a;
-                    x++;
+                    aWithIPtr->toFree = a_with_i;
                     call.a = aWithIPtr;
                     call.b = f.b;
                     push(stack, call);
@@ -141,7 +139,7 @@ int main()
     clock_gettime(CLOCK_MONOTONIC, &start);
     InputData input_data;
     //input_data_read(&input_data);
-    input_data_init(&input_data, 8, 10, (int[]){0}, (int[]){1, 0});
+    input_data_init(&input_data, 8, 15, (int[]){0}, (int[]){1, 0});
 
     Solution best_solution;
     solution_init(&best_solution);
@@ -170,6 +168,5 @@ int main()
     double time_taken = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     printf("Execution time: %f seconds\n", time_taken);
 
-    printf("%d %d", x, y);
     return 0;
 }
