@@ -1,7 +1,7 @@
 common/CMakeFiles/err.dir/err.c.o: \
- /home/maciej/MIMUW/PW/task2/mk459179/mk459179/common/err.c \
+ /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/common/err.c \
  /usr/include/stdc-predef.h \
- /home/maciej/MIMUW/PW/task2/mk459179/mk459179/common/err.h \
+ /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/common/err.h \
  /usr/lib/gcc/x86_64-linux-gnu/12/include/stdnoreturn.h \
  /usr/include/errno.h /usr/include/features.h \
  /usr/include/features-time64.h \

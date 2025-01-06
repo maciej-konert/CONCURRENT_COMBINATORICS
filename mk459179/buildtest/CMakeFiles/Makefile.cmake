@@ -7,13 +7,13 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/maciej/MIMUW/PW/task2/mk459179/mk459179/CMakeLists.txt"
+  "/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/CMakeLists.txt"
   "CMakeFiles/3.25.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.25.1/CMakeSystem.cmake"
-  "/home/maciej/MIMUW/PW/task2/mk459179/mk459179/common/CMakeLists.txt"
-  "/home/maciej/MIMUW/PW/task2/mk459179/mk459179/nonrecursive/CMakeLists.txt"
-  "/home/maciej/MIMUW/PW/task2/mk459179/mk459179/parallel/CMakeLists.txt"
-  "/home/maciej/MIMUW/PW/task2/mk459179/mk459179/reference/CMakeLists.txt"
+  "/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/common/CMakeLists.txt"
+  "/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/nonrecursive/CMakeLists.txt"
+  "/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/parallel/CMakeLists.txt"
+  "/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/reference/CMakeLists.txt"
   "/usr/share/cmake-3.25/Modules/CMakeCCompiler.cmake.in"
   "/usr/share/cmake-3.25/Modules/CMakeCCompilerABI.c"
   "/usr/share/cmake-3.25/Modules/CMakeCInformation.cmake"

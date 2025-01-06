@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/maciej/MIMUW/PW/task2/mk459179/mk459179/common/err.c" "common/CMakeFiles/err.dir/err.c.o" "gcc" "common/CMakeFiles/err.dir/err.c.o.d"
+  "/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/common/err.c" "common/CMakeFiles/err.dir/err.c.o" "gcc" "common/CMakeFiles/err.dir/err.c.o.d"
   )
 
 # Targets to which this target links.

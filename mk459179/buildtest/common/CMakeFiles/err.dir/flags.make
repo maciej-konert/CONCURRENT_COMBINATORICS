@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/maciej/MIMUW/PW/task2/mk459179/mk459179
+C_INCLUDES = -I/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179
 
 C_FLAGS = -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-uninitialized -Wno-unused-function -Werror -pthread -std=gnu17
 

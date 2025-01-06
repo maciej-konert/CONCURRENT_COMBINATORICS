@@ -1,4 +1,4 @@
-# Install script for directory: /home/maciej/MIMUW/PW/task2/mk459179/mk459179/reference
+# Install script for directory: /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/reference
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

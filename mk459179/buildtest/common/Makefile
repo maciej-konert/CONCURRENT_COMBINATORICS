@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/maciej/MIMUW/PW/task2/mk459179/mk459179
+CMAKE_SOURCE_DIR = /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest
+CMAKE_BINARY_DIR = /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/common//CMakeFiles/progress.marks
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 0
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/common//CMakeFiles/progress.marks
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/clean
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/preinstall
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/preinstall
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 common/CMakeFiles/err.dir/rule:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/CMakeFiles/err.dir/rule
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/CMakeFiles/err.dir/rule
 .PHONY : common/CMakeFiles/err.dir/rule
 
 # Convenience name for target.
@@ -127,12 +127,12 @@ err: common/CMakeFiles/err.dir/rule
 
 # fast build rule for target.
 err/fast:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/build
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/build
 .PHONY : err/fast
 
 # Convenience name for target.
 common/CMakeFiles/io.dir/rule:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/CMakeFiles/io.dir/rule
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/CMakeFiles/io.dir/rule
 .PHONY : common/CMakeFiles/io.dir/rule
 
 # Convenience name for target.
@@ -141,7 +141,7 @@ io: common/CMakeFiles/io.dir/rule
 
 # fast build rule for target.
 io/fast:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/build
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/build
 .PHONY : io/fast
 
 err.o: err.c.o
@@ -149,7 +149,7 @@ err.o: err.c.o
 
 # target to build an object file
 err.c.o:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/err.c.o
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/err.c.o
 .PHONY : err.c.o
 
 err.i: err.c.i
@@ -157,7 +157,7 @@ err.i: err.c.i
 
 # target to preprocess a source file
 err.c.i:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/err.c.i
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/err.c.i
 .PHONY : err.c.i
 
 err.s: err.c.s
@@ -165,7 +165,7 @@ err.s: err.c.s
 
 # target to generate assembly for a file
 err.c.s:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/err.c.s
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/err.c.s
 .PHONY : err.c.s
 
 io.o: io.c.o
@@ -173,7 +173,7 @@ io.o: io.c.o
 
 # target to build an object file
 io.c.o:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/io.c.o
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/io.c.o
 .PHONY : io.c.o
 
 io.i: io.c.i
@@ -181,7 +181,7 @@ io.i: io.c.i
 
 # target to preprocess a source file
 io.c.i:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/io.c.i
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/io.c.i
 .PHONY : io.c.i
 
 io.s: io.c.s
@@ -189,7 +189,7 @@ io.s: io.c.s
 
 # target to generate assembly for a file
 io.c.s:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/io.c.s
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/io.c.s
 .PHONY : io.c.s
 
 # Help Target
@@ -219,6 +219,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/maciej/MIMUW/PW/task2/mk459179/mk459179
+# Install script for directory: /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,10 +44,10 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/maciej/MIMUW/PW/task2/mk459179/cmake-build-debug/mk459179/common/cmake_install.cmake")
-  include("/home/maciej/MIMUW/PW/task2/mk459179/cmake-build-debug/mk459179/reference/cmake_install.cmake")
-  include("/home/maciej/MIMUW/PW/task2/mk459179/cmake-build-debug/mk459179/nonrecursive/cmake_install.cmake")
-  include("/home/maciej/MIMUW/PW/task2/mk459179/cmake-build-debug/mk459179/parallel/cmake_install.cmake")
+  include("/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/cmake-build-debug/mk459179/common/cmake_install.cmake")
+  include("/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/cmake-build-debug/mk459179/reference/cmake_install.cmake")
+  include("/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/cmake-build-debug/mk459179/nonrecursive/cmake_install.cmake")
+  include("/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/cmake-build-debug/mk459179/parallel/cmake_install.cmake")
 
 endif()
 

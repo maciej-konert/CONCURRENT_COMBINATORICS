@@ -1,8 +1,8 @@
 common/CMakeFiles/io.dir/io.c.o: \
- /home/maciej/MIMUW/PW/task2/mk459179/mk459179/common/io.c \
+ /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/common/io.c \
  /usr/include/stdc-predef.h \
- /home/maciej/MIMUW/PW/task2/mk459179/mk459179/common/io.h \
- /home/maciej/MIMUW/PW/task2/mk459179/mk459179/common/sumset.h \
+ /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/common/io.h \
+ /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/common/sumset.h \
  /usr/include/assert.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -30,7 +30,7 @@ common/CMakeFiles/io.dir/io.c.o: \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /home/maciej/MIMUW/PW/task2/mk459179/mk459179/common/err.h \
+ /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/common/err.h \
  /usr/lib/gcc/x86_64-linux-gnu/12/include/stdnoreturn.h \
  /usr/include/stdio.h /usr/lib/gcc/x86_64-linux-gnu/12/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \

@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/maciej/MIMUW/PW/task2/mk459179/mk459179
+CMAKE_SOURCE_DIR = /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest
+CMAKE_BINARY_DIR = /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -152,14 +152,14 @@ reference/clean: reference/CMakeFiles/reference.dir/clean
 common/CMakeFiles/err.dir/all:
 	$(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/depend
 	$(MAKE) $(MAKESILENT) -f common/CMakeFiles/err.dir/build.make common/CMakeFiles/err.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles --progress-num=1,2 "Built target err"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles --progress-num=1,2 "Built target err"
 .PHONY : common/CMakeFiles/err.dir/all
 
 # Build rule for subdir invocation for target.
 common/CMakeFiles/err.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/CMakeFiles/err.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 0
 .PHONY : common/CMakeFiles/err.dir/rule
 
 # Convenience name for target.
@@ -178,14 +178,14 @@ common/CMakeFiles/err.dir/clean:
 common/CMakeFiles/io.dir/all: common/CMakeFiles/err.dir/all
 	$(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/depend
 	$(MAKE) $(MAKESILENT) -f common/CMakeFiles/io.dir/build.make common/CMakeFiles/io.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles --progress-num=3,4 "Built target io"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles --progress-num=3,4 "Built target io"
 .PHONY : common/CMakeFiles/io.dir/all
 
 # Build rule for subdir invocation for target.
 common/CMakeFiles/io.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 common/CMakeFiles/io.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 0
 .PHONY : common/CMakeFiles/io.dir/rule
 
 # Convenience name for target.
@@ -205,14 +205,14 @@ reference/CMakeFiles/reference.dir/all: common/CMakeFiles/err.dir/all
 reference/CMakeFiles/reference.dir/all: common/CMakeFiles/io.dir/all
 	$(MAKE) $(MAKESILENT) -f reference/CMakeFiles/reference.dir/build.make reference/CMakeFiles/reference.dir/depend
 	$(MAKE) $(MAKESILENT) -f reference/CMakeFiles/reference.dir/build.make reference/CMakeFiles/reference.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles --progress-num=9,10 "Built target reference"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles --progress-num=9,10 "Built target reference"
 .PHONY : reference/CMakeFiles/reference.dir/all
 
 # Build rule for subdir invocation for target.
 reference/CMakeFiles/reference.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 reference/CMakeFiles/reference.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 0
 .PHONY : reference/CMakeFiles/reference.dir/rule
 
 # Convenience name for target.
@@ -232,14 +232,14 @@ nonrecursive/CMakeFiles/nonrecursive.dir/all: common/CMakeFiles/err.dir/all
 nonrecursive/CMakeFiles/nonrecursive.dir/all: common/CMakeFiles/io.dir/all
 	$(MAKE) $(MAKESILENT) -f nonrecursive/CMakeFiles/nonrecursive.dir/build.make nonrecursive/CMakeFiles/nonrecursive.dir/depend
 	$(MAKE) $(MAKESILENT) -f nonrecursive/CMakeFiles/nonrecursive.dir/build.make nonrecursive/CMakeFiles/nonrecursive.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles --progress-num=5,6 "Built target nonrecursive"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles --progress-num=5,6 "Built target nonrecursive"
 .PHONY : nonrecursive/CMakeFiles/nonrecursive.dir/all
 
 # Build rule for subdir invocation for target.
 nonrecursive/CMakeFiles/nonrecursive.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nonrecursive/CMakeFiles/nonrecursive.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 0
 .PHONY : nonrecursive/CMakeFiles/nonrecursive.dir/rule
 
 # Convenience name for target.
@@ -259,14 +259,14 @@ parallel/CMakeFiles/parallel.dir/all: common/CMakeFiles/err.dir/all
 parallel/CMakeFiles/parallel.dir/all: common/CMakeFiles/io.dir/all
 	$(MAKE) $(MAKESILENT) -f parallel/CMakeFiles/parallel.dir/build.make parallel/CMakeFiles/parallel.dir/depend
 	$(MAKE) $(MAKESILENT) -f parallel/CMakeFiles/parallel.dir/build.make parallel/CMakeFiles/parallel.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles --progress-num=7,8 "Built target parallel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles --progress-num=7,8 "Built target parallel"
 .PHONY : parallel/CMakeFiles/parallel.dir/all
 
 # Build rule for subdir invocation for target.
 parallel/CMakeFiles/parallel.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 parallel/CMakeFiles/parallel.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/PW/task2/mk459179/mk459179/buildtest/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179/buildtest/CMakeFiles 0
 .PHONY : parallel/CMakeFiles/parallel.dir/rule
 
 # Convenience name for target.
