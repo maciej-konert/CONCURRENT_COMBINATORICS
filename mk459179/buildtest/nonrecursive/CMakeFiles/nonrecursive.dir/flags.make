@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = -I/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/mk459179
 
-C_FLAGS = -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-uninitialized -Wno-unused-function -Werror -pthread -std=gnu17
+C_FLAGS = -O3 -DNDEBUG -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-uninitialized -Wno-unused-function -Werror -pthread -march=native -O3 -std=gnu17
 

@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -DNDEBUG -pthread CMakeFiles/parallel.dir/main.c.o -o parallel  ../common/libio.a ../common/liberr.a -latomic

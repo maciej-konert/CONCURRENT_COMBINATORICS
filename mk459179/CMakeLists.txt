@@ -36,5 +36,3 @@ add_subdirectory(reference)
 add_subdirectory(nonrecursive)
 add_subdirectory(parallel)
 
-#MY
-add_compile_options(-g)
