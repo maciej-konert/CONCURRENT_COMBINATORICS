@@ -8,8 +8,8 @@
 #include <time.h>
 
 #define MAX_STACK_SIZE 8200
-#define POOL_SIZE 1000000
-int x = 0, y = 0, z = 0;
+#define POOL_SIZE 1000
+
 typedef struct sharedPtr SharedPtrSumset;
 struct sharedPtr {
     int refCounter;
@@ -56,7 +56,6 @@ bool isEmpty(const Stack* stack) {
 // SHARED POINTER FUNCTIONS.
 
 SharedPtrSumset* allocPtr(SharedPtrSumset** ptrPoolReady) {
-    z++;
     SharedPtrSumset* ptr = *ptrPoolReady;
 
     *ptrPoolReady = (*ptrPoolReady)->next;
@@ -65,28 +64,17 @@ SharedPtrSumset* allocPtr(SharedPtrSumset** ptrPoolReady) {
 }
 
 void releasePtr(SharedPtrSumset* ptr, SharedPtrSumset** ptrPoolReady) {
-    if (ptr->refCounter == 1) {
-        y++;
+    while (ptr && --ptr->refCounter == 0) {
+        SharedPtrSumset* tmp = ptr->parent;
+
         ptr->next = *ptrPoolReady;
         *ptrPoolReady = ptr;
-    } else {
-        ptr->refCounter--;
+
+        ptr = tmp;
     }
 }
 
 // ACTUAL SOLVING FUNCTIONS.
-
-void incrementParent(SharedPtrSumset* ptr) {
-    if (ptr->parent) {
-        ptr->parent->refCounter++;
-    }
-}
-
-void decrementParent(SharedPtrSumset* ptr, SharedPtrSumset** ptrPoolReady) {
-    if (ptr->parent) {
-        releasePtr(ptr->parent, ptrPoolReady);
-    }
-}
 
 void swap(FooCall* f) {
     if (f->a->sumset.sum > f->b->sumset.sum) {
@@ -97,12 +85,13 @@ void swap(FooCall* f) {
 }
 
 static void solve(Stack* stack, InputData* input, Solution* solution) {
-    SharedPtrSumset* ptrPoolReady = malloc(sizeof(struct sharedPtr) * POOL_SIZE);
-    SharedPtrSumset* toFree = ptrPoolReady;
-    for (int i = 0; i < POOL_SIZE - 1; i++) {
-        ptrPoolReady[i].next = &ptrPoolReady[i + 1];
+    SharedPtrSumset *ptrPoolReady = malloc(sizeof(SharedPtrSumset));
+    SharedPtrSumset* prev = ptrPoolReady;
+    for (int i = 0; i < POOL_SIZE; i++) {
+        prev->next = malloc(sizeof(SharedPtrSumset));
+        prev = prev->next;
+        prev->next = NULL;
     }
-    ptrPoolReady[POOL_SIZE - 1].next = NULL;
 
     while(!isEmpty(stack)) {
         FooCall f = pop(stack);
@@ -124,9 +113,6 @@ static void solve(Stack* stack, InputData* input, Solution* solution) {
                     call.a = aWithIPtr;
                     call.b = f.b;
                     push(stack, call);
-
-                    incrementParent(f.a);
-                    incrementParent(f.b);
                 }
             }
         } else if ((f.a->sumset.sum == f.b->sumset.sum) &&
@@ -135,14 +121,15 @@ static void solve(Stack* stack, InputData* input, Solution* solution) {
                 solution_build(solution, input, &f.a->sumset, &f.b->sumset);
             }
         }
-        //printf("a, %d, b %d\n", f.a->refCounter, f.b->refCounter);
-        decrementParent(f.a, &ptrPoolReady);
-        decrementParent(f.b, &ptrPoolReady);
         releasePtr(f.a, &ptrPoolReady);
         releasePtr(f.b, &ptrPoolReady);
-        x++;
     }
-    free(toFree);
+    prev = ptrPoolReady;
+    while (prev) {
+        SharedPtrSumset *tmp = prev->next;
+        free(prev);
+        prev = tmp;
+    }
 }
 
 int main()
@@ -151,7 +138,7 @@ int main()
     clock_gettime(CLOCK_MONOTONIC, &start);
     InputData input_data;
     //input_data_read(&input_data);
-    input_data_init(&input_data, 8, 4, (int[]){0}, (int[]){1, 4,0});
+    input_data_init(&input_data, 8, 17, (int[]){0}, (int[]){1, 3,0});
 
     Solution best_solution;
     solution_init(&best_solution);
@@ -160,8 +147,8 @@ int main()
 
     SharedPtrSumset *a = malloc(sizeof(SharedPtrSumset));
     SharedPtrSumset *b = malloc(sizeof(SharedPtrSumset));
-    a->refCounter = 1123;
-    b->refCounter = 1213;
+    a->refCounter = 1;
+    b->refCounter = 1;
     a->parent = NULL;
     b->parent = NULL;
     a->sumset = input_data.a_start;
@@ -176,13 +163,9 @@ int main()
 
     free(stack->array);
     free(stack);
-    free(a);
-    free(b);
+
     clock_gettime(CLOCK_MONOTONIC, &end);
     double time_taken = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     printf("Execution time: %f seconds\n", time_taken);
-    printf("%d\n", x);
-    printf("rel%d\n", y);
-    printf("mall%d", z);
     return 0;
 }
