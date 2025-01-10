@@ -10,7 +10,7 @@
 					[
 						1
 					],
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
 					"projectIndex" : 0,
 					"source" : "."
 				},
@@ -23,7 +23,7 @@
 						4,
 						5
 					],
-					"jsonFile" : "directory-mk459179-Debug-8513a34c5a18f960ecea.json",
+					"jsonFile" : "directory-mk459179-Release-8513a34c5a18f960ecea.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.12"
@@ -34,7 +34,7 @@
 				},
 				{
 					"build" : "mk459179/common",
-					"jsonFile" : "directory-mk459179.common-Debug-cf8883cf11df74c4f551.json",
+					"jsonFile" : "directory-mk459179.common-Release-cf8883cf11df74c4f551.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.12"
@@ -50,7 +50,7 @@
 				},
 				{
 					"build" : "mk459179/reference",
-					"jsonFile" : "directory-mk459179.reference-Debug-6f921d55aaaa2922e5f4.json",
+					"jsonFile" : "directory-mk459179.reference-Release-6f921d55aaaa2922e5f4.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.12"
@@ -65,7 +65,7 @@
 				},
 				{
 					"build" : "mk459179/nonrecursive",
-					"jsonFile" : "directory-mk459179.nonrecursive-Debug-c9e3c26b5b7e5ed03b9a.json",
+					"jsonFile" : "directory-mk459179.nonrecursive-Release-c9e3c26b5b7e5ed03b9a.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.12"
@@ -80,7 +80,7 @@
 				},
 				{
 					"build" : "mk459179/parallel",
-					"jsonFile" : "directory-mk459179.parallel-Debug-28983edc870a1857218e.json",
+					"jsonFile" : "directory-mk459179.parallel-Release-28983edc870a1857218e.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.12"
@@ -94,7 +94,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "Release",
 			"projects" : 
 			[
 				{
@@ -134,35 +134,35 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "err::@9610e5326eaaf9622fc9",
-					"jsonFile" : "target-err-Debug-1e39dedc9fd686f7c272.json",
+					"jsonFile" : "target-err-Release-331d967cf1e3fbaa0ce7.json",
 					"name" : "err",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "io::@9610e5326eaaf9622fc9",
-					"jsonFile" : "target-io-Debug-7282eb3b92a01f9ee489.json",
+					"jsonFile" : "target-io-Release-110d6d7d98a1315d3658.json",
 					"name" : "io",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 4,
 					"id" : "nonrecursive::@88ce2eddaf93dd335378",
-					"jsonFile" : "target-nonrecursive-Debug-45a60770d2505dc6cb0a.json",
+					"jsonFile" : "target-nonrecursive-Release-af5cd778ba73545f6c73.json",
 					"name" : "nonrecursive",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 5,
 					"id" : "parallel::@396af7005307ccf4431d",
-					"jsonFile" : "target-parallel-Debug-9a4585e5df4af6cbb7ea.json",
+					"jsonFile" : "target-parallel-Release-a5c0b9ac751910a802b5.json",
 					"name" : "parallel",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "reference::@4a974a6266ed17bcce73",
-					"jsonFile" : "target-reference-Debug-6c876891b227f1e8284d.json",
+					"jsonFile" : "target-reference-Release-1ef484c841e72487f694.json",
 					"name" : "reference",
 					"projectIndex" : 1
 				}
@@ -172,7 +172,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/cmake-build-debug",
+		"build" : "/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS/cmake-build-release",
 		"source" : "/home/maciej/MIMUW/ASD/CONCURRENT_COMBINATORICS"
 	},
 	"version" : 

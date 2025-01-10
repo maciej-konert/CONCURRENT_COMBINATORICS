@@ -1,14 +1,12 @@
 #include <stddef.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 #include "common/io.h"
 #include "common/sumset.h"
 
-#include <time.h>
-
-#define MAX_STACK_SIZE 8200
-#define POOL_SIZE 1000
+#define MAX_STACK_SIZE 1024
+#define POOL_SIZE 400
 
 typedef struct sharedPtr SharedPtrSumset;
 struct sharedPtr {
@@ -26,27 +24,40 @@ typedef struct {
 typedef struct {
     FooCall* array;
     int size;
+    int maxSize;
 } Stack;
 
 // STACK FUNCTIONS.
 
 FooCall pop(Stack* stack) {
-    assert(stack->size > 0 && "Attempted to pop from an empty stack");
     return stack->array[--stack->size];
 }
 
 void push(Stack* stack, FooCall call) {
-    assert(stack->size < MAX_STACK_SIZE && "Pushed to full stack");
+    if (stack->size == stack->maxSize) {
+        FooCall* new = malloc(2 * stack->maxSize * sizeof(FooCall));
+        if (!new)
+            exit(1);
+
+        for (int i = 0; i < stack->size; i++)
+            new[i] = stack->array[i];
+
+        stack->array = new;
+        stack->maxSize = 2 * stack->maxSize;
+    }
     stack->array[stack->size++] = call;
 }
 
-Stack* initStack() {
+void initStack(Stack** ptr) {
     Stack* stack = malloc(sizeof(Stack));
-    FooCall* arr = calloc(MAX_STACK_SIZE, sizeof(FooCall));
+    FooCall* arr = malloc(MAX_STACK_SIZE * sizeof(FooCall));
+    if (!arr || !stack)
+        exit(1);
     stack->size = 0;
     stack->array = arr;
+    stack->maxSize = MAX_STACK_SIZE;
 
-    return stack;
+    *ptr = stack;
 }
 
 bool isEmpty(const Stack* stack) {
@@ -56,6 +67,15 @@ bool isEmpty(const Stack* stack) {
 // SHARED POINTER FUNCTIONS.
 
 SharedPtrSumset* allocPtr(SharedPtrSumset** ptrPoolReady) {
+    if (!*ptrPoolReady) {
+        SharedPtrSumset* prev = malloc(sizeof(SharedPtrSumset));
+        *ptrPoolReady = prev;
+        for (int i = 0; i < POOL_SIZE; i++) {
+            prev->next = malloc(sizeof(SharedPtrSumset));
+            prev = prev->next;
+            prev->next = NULL;
+        }
+    }
     SharedPtrSumset* ptr = *ptrPoolReady;
 
     *ptrPoolReady = (*ptrPoolReady)->next;
@@ -86,9 +106,13 @@ void swap(FooCall* f) {
 
 static void solve(Stack* stack, InputData* input, Solution* solution) {
     SharedPtrSumset *ptrPoolReady = malloc(sizeof(SharedPtrSumset));
+    if (!ptrPoolReady)
+        exit(1);
     SharedPtrSumset* prev = ptrPoolReady;
     for (int i = 0; i < POOL_SIZE; i++) {
         prev->next = malloc(sizeof(SharedPtrSumset));
+        if(!prev->next)
+            exit(1);
         prev = prev->next;
         prev->next = NULL;
     }
@@ -134,19 +158,20 @@ static void solve(Stack* stack, InputData* input, Solution* solution) {
 
 int main()
 {
-    struct timespec start, end;
-    clock_gettime(CLOCK_MONOTONIC, &start);
     InputData input_data;
     //input_data_read(&input_data);
-    input_data_init(&input_data, 8, 17, (int[]){0}, (int[]){1, 3,0});
+    input_data_init(&input_data, 8, 2, (int[]){0}, (int[]){1, 0});
 
     Solution best_solution;
     solution_init(&best_solution);
 
-    Stack* stack = initStack();
+    Stack* stack;
+    initStack(&stack);
 
     SharedPtrSumset *a = malloc(sizeof(SharedPtrSumset));
     SharedPtrSumset *b = malloc(sizeof(SharedPtrSumset));
+    if (!a || !b)
+        exit(1);
     a->refCounter = 1;
     b->refCounter = 1;
     a->parent = NULL;
@@ -164,8 +189,5 @@ int main()
     free(stack->array);
     free(stack);
 
-    clock_gettime(CLOCK_MONOTONIC, &end);
-    double time_taken = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
-    printf("Execution time: %f seconds\n", time_taken);
     return 0;
 }
