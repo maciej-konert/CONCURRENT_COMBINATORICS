@@ -11,8 +11,8 @@ add_compile_options(-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-u
 add_compile_options(-pthread)
 add_link_options(-pthread)
 
-# add_compile_options(-fsanitize=thread)
-# add_link_options(-fsanitize=thread)
+#add_compile_options(-fsanitize=thread)
+#add_link_options(-fsanitize=thread)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
     add_compile_options(-march=native -O3)

@@ -11,7 +11,9 @@
 Stack* global_stack;
 pthread_mutex_t stack_mutex;
 pthread_mutex_t max_mutex;
-atomic_int workers_finished;
+int workers_finished = 0;
+pthread_cond_t stack_cond;
+bool running = true;
 
 Solution best_solution;
 InputData input_data;
@@ -19,22 +21,22 @@ InputData input_data;
 atomic_int count_debug = 0;
 // SOLVING FUNCTIONS
 
-static void solveRecursively(const Sumset* a, const Sumset* b)
+static void solveRecursively(const Sumset* a, const Sumset* b, Solution* curr_solution)
 {
     if (a->sum > b->sum)
-        return solveRecursively(b, a);
+        return solveRecursively(b, a, curr_solution);
 
     if (is_sumset_intersection_trivial(a, b)) { // s(a) ∩ s(b) = {0}.
         for (size_t i = a->last; i <= input_data.d; ++i) {
             if (!does_sumset_contain(b, i)) {
                 Sumset a_with_i;
                 sumset_add(&a_with_i, a, i);
-                solveRecursively(&a_with_i, b);
+                solveRecursively(&a_with_i, b, curr_solution);
             }
         }
     } else if ((a->sum == b->sum) && (get_sumset_intersection_size(a, b) == 2)) { // s(a) ∩ s(b) = {0, ∑b}.
-        if (b->sum > best_solution.sum) {
-            solution_build(&best_solution, &input_data, a, b);
+        if (b->sum > curr_solution->sum) {
+            solution_build(curr_solution, &input_data, a, b);
         }
     }
     count_debug++;
@@ -59,12 +61,13 @@ void solve(shared_ptr** ptr_pool, Stack* my_stack, Solution* curr_solution)
                 a_with_i->parent = f.a;
                 call.a = a_with_i;
                 call.b = f.b;
-                if (capacity(global_stack) < 2 * input_data.t && input_data.t != 1) {
+                if (capacity(global_stack) < 2 * input_data.t) {
                     pthread_mutex_lock(&stack_mutex);
                     push(global_stack, call);
                     pthread_mutex_unlock(&stack_mutex);
+                    pthread_cond_broadcast(&stack_cond);
                 } else {
-                    solveRecursively(&a_with_i->sumset, &f.b->sumset);
+                    solveRecursively(&a_with_i->sumset, &f.b->sumset, curr_solution);
                     release_ptr(a_with_i, ptr_pool);
                     release_ptr(f.b, ptr_pool);
                 }
@@ -92,20 +95,29 @@ void* worker(void* data)
     init_pool(&ptr_pool);
     init_stack(&myStack);
 
-    while (atomic_load(&workers_finished) < input_data.t || (!is_empty(myStack) || !is_empty(global_stack))) {
-        workers_finished--;
-
-        while (!is_empty(myStack)) {
+    while (running) {
+        if (!is_empty(myStack)) {
             solve(&ptr_pool, myStack, &current_best_solution);
         }
+
         pthread_mutex_lock(&stack_mutex);
-        if (!is_empty(global_stack)) {
+        workers_finished++;
+
+        if (workers_finished == input_data.t) {
+            running = false;
+        }
+//        while (is_empty(global_stack) && running) {
+//            pthread_cond_wait(&stack_cond, &stack_mutex);
+//        }
+
+        if (running) {
             push(myStack, pop(global_stack));
         }
-        pthread_mutex_unlock(&stack_mutex);
 
-        workers_finished++;
+        workers_finished--;
+        pthread_mutex_unlock(&stack_mutex);
     }
+    pthread_cond_broadcast(&stack_cond);
 
     pthread_mutex_lock(&max_mutex);
     if ((&current_best_solution)->sum > best_solution.sum) {
@@ -125,15 +137,15 @@ int main()
 {
     //input_data_read(&input_data);
 //    input_data_init(&input_data, 2, 10, (int[]){1, 0}, (int[]){4,0});    // NIE DIZALA
-    input_data_init(&input_data, 2, 10, (int[]){1, 0}, (int[]){0});
+    input_data_init(&input_data, 4, 30, (int[]){0}, (int[]){1, 0});
 
     solution_init(&best_solution);
 
     pthread_t threads[input_data.t];
-    workers_finished = input_data.t;
 
     ASSERT_ZERO(pthread_mutex_init(&stack_mutex, NULL));
     ASSERT_ZERO(pthread_mutex_init(&max_mutex, NULL));
+    ASSERT_ZERO(pthread_cond_init(&stack_cond, NULL));
     init_stack(&global_stack);
 
     shared_ptr *a, *b;
@@ -153,6 +165,7 @@ int main()
     }
     destroy_stack(global_stack);
     pthread_mutex_destroy(&stack_mutex);
+    pthread_cond_destroy(&stack_cond);
 
     solution_print(&best_solution);
     printf("states: %d\n", count_debug);
