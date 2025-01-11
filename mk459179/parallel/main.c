@@ -15,7 +15,30 @@ atomic_int workers_finished;
 
 Solution best_solution;
 InputData input_data;
+
+atomic_int count_debug = 0;
 // SOLVING FUNCTIONS
+
+static void solveRecursively(const Sumset* a, const Sumset* b)
+{
+    if (a->sum > b->sum)
+        return solveRecursively(b, a);
+
+    if (is_sumset_intersection_trivial(a, b)) { // s(a) ∩ s(b) = {0}.
+        for (size_t i = a->last; i <= input_data.d; ++i) {
+            if (!does_sumset_contain(b, i)) {
+                Sumset a_with_i;
+                sumset_add(&a_with_i, a, i);
+                solveRecursively(&a_with_i, b);
+            }
+        }
+    } else if ((a->sum == b->sum) && (get_sumset_intersection_size(a, b) == 2)) { // s(a) ∩ s(b) = {0, ∑b}.
+        if (b->sum > best_solution.sum) {
+            solution_build(&best_solution, &input_data, a, b);
+        }
+    }
+    count_debug++;
+}
 
 void solve(shared_ptr** ptr_pool, Stack* my_stack, Solution* curr_solution)
 {
@@ -32,18 +55,18 @@ void solve(shared_ptr** ptr_pool, Stack* my_stack, Solution* curr_solution)
                 shared_ptr* a_with_i = alloc_ptr(ptr_pool);
 
                 sumset_add(&a_with_i->sumset, &f.a->sumset, i);
-
                 a_with_i->ref_count = 1;
                 a_with_i->parent = f.a;
                 call.a = a_with_i;
                 call.b = f.b;
-
-                if (capacity(global_stack) < input_data.t && input_data.t != 1) {
+                if (capacity(global_stack) < 2 * input_data.t && input_data.t != 1) {
                     pthread_mutex_lock(&stack_mutex);
                     push(global_stack, call);
                     pthread_mutex_unlock(&stack_mutex);
                 } else {
-                    push(my_stack, call);
+                    solveRecursively(&a_with_i->sumset, &f.b->sumset);
+                    release_ptr(a_with_i, ptr_pool);
+                    release_ptr(f.b, ptr_pool);
                 }
             }
         }
@@ -53,14 +76,15 @@ void solve(shared_ptr** ptr_pool, Stack* my_stack, Solution* curr_solution)
             solution_build(curr_solution, &input_data, &f.a->sumset, &f.b->sumset);
         }
     }
+    count_debug++;
     release_ptr(f.a, ptr_pool);
     release_ptr(f.b, ptr_pool);
 }
 
 void* worker(void* data)
 {
-    Solution* current_best_solution = malloc(sizeof(Solution));
-    solution_init(current_best_solution);
+    Solution current_best_solution;
+    solution_init(&current_best_solution);
 
     Stack* myStack;
     shared_ptr* ptr_pool;
@@ -72,7 +96,7 @@ void* worker(void* data)
         workers_finished--;
 
         while (!is_empty(myStack)) {
-            solve(&ptr_pool, myStack, current_best_solution);
+            solve(&ptr_pool, myStack, &current_best_solution);
         }
         pthread_mutex_lock(&stack_mutex);
         if (!is_empty(global_stack)) {
@@ -84,8 +108,8 @@ void* worker(void* data)
     }
 
     pthread_mutex_lock(&max_mutex);
-    if (current_best_solution->sum > best_solution.sum) {
-        best_solution = *current_best_solution;
+    if ((&current_best_solution)->sum > best_solution.sum) {
+        best_solution = current_best_solution;
     }
     pthread_mutex_unlock(&max_mutex);
 
@@ -100,7 +124,8 @@ void* worker(void* data)
 int main()
 {
     //input_data_read(&input_data);
-    input_data_init(&input_data, 3, 30, (int[]){0}, (int[]){1,0});
+//    input_data_init(&input_data, 2, 10, (int[]){1, 0}, (int[]){4,0});    // NIE DIZALA
+    input_data_init(&input_data, 2, 10, (int[]){1, 0}, (int[]){0});
 
     solution_init(&best_solution);
 
@@ -126,7 +151,10 @@ int main()
     for (int i = 0; i < input_data.t; i++) {
         ASSERT_ZERO(pthread_join(threads[i], NULL));
     }
+    destroy_stack(global_stack);
+    pthread_mutex_destroy(&stack_mutex);
 
     solution_print(&best_solution);
+    printf("states: %d\n", count_debug);
     return 0;
 }

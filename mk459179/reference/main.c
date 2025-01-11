@@ -8,6 +8,8 @@
 
 static InputData input_data;
 
+int count_debug = 0;
+
 static Solution best_solution;
 static void solve(const Sumset* a, const Sumset* b)
 {
@@ -27,16 +29,18 @@ static void solve(const Sumset* a, const Sumset* b)
             solution_build(&best_solution, &input_data, a, b);
         }
     }
+    count_debug++;
 }
 
 int main()
 {
     //input_data_read(&input_data);
-    input_data_init(&input_data, 8, 20, (int[]){0}, (int[]){1, 3,0});
+    input_data_init(&input_data, 8, 10, (int[]){1, 0}, (int[]){0});
 
     solution_init(&best_solution);
     solve(&input_data.a_start, &input_data.b_start);
     solution_print(&best_solution);
 
+    printf("states: %d", count_debug);
     return 0;
 }
