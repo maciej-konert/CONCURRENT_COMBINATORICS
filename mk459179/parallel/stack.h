@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdio.h>
 #include "shared_ptr.h"
 
 #define STACK_SIZE 2048
@@ -12,7 +11,7 @@ typedef struct foo_call {
 
 typedef struct stack {
    Foo_call *array;
-   atomic_int capacity;
+   int capacity;
    int max_capacity;
 } Stack;
 
@@ -64,6 +63,7 @@ void push(Stack* stack, Foo_call f)
         for (int i = 0; i < stack->capacity; i++) {
             new[i] = stack->array[i];
         }
+
         free(stack->array);
         stack->array = new;
         stack->max_capacity = 2 * stack->max_capacity;
