@@ -6,7 +6,7 @@
 #include "common/io.h"
 #include "common/sumset.h"
 
-#define POOL_SIZE 512
+#define POOL_SIZE 256
 
 #define CHECK_MALLOC(ptr) \
     do { \

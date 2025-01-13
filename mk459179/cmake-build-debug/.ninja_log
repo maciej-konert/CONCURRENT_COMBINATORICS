@@ -1,7 +1,0 @@
-# ninja log v6
-2	52	1735621478388314573	common/CMakeFiles/err.dir/err.c.o	c2ff17ddfcd18956
-52	61	1735621478440299463	common/liberr.a	22ef6e5bfeb7403b
-2	72	1735621478388314573	reference/CMakeFiles/reference.dir/main.c.o	babebc8ab3383162
-2	77	1735621478388314573	common/CMakeFiles/io.dir/io.c.o	9545e914a1929324
-77	82	1735621478464292489	common/libio.a	4156e2ca795e0f83
-82	99	1735621478468291326	reference/reference	9572a3594616fe87

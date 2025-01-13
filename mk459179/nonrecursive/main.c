@@ -1,13 +1,11 @@
 #include <stddef.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 #include "common/io.h"
 #include "common/sumset.h"
 
 #define MAX_STACK_SIZE 1024
-#define POOL_SIZE 400
-int count_debug = 0;
+#define POOL_SIZE 512
 
 typedef struct sharedPtr SharedPtrSumset;
 struct sharedPtr {
@@ -146,7 +144,6 @@ static void solve(Stack* stack, InputData* input, Solution* solution) {
                 solution_build(solution, input, &f.a->sumset, &f.b->sumset);
             }
         }
-        count_debug++;
         releasePtr(f.a, &ptrPoolReady);
         releasePtr(f.b, &ptrPoolReady);
     }
@@ -161,8 +158,7 @@ static void solve(Stack* stack, InputData* input, Solution* solution) {
 int main()
 {
     InputData input_data;
-    //input_data_read(&input_data);
-    input_data_init(&input_data, 2, 10, (int[]){1, 0}, (int[]){4,0});
+    input_data_read(&input_data);
 
     Solution best_solution;
     solution_init(&best_solution);
@@ -191,6 +187,5 @@ int main()
     free(stack->array);
     free(stack);
 
-    printf("states: %d", count_debug);
     return 0;
 }
